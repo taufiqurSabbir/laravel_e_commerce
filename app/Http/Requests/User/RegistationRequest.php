@@ -11,7 +11,7 @@ class RegistationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class RegistationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'phone' => ['required','numeric','min:11','unique:users,phone'],
         ];
     }
 }

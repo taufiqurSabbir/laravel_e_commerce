@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\GuestLoginRequest;
 use App\Http\Requests\User\loginRequest;
+use App\Http\Requests\User\RegistationRequest;
 use App\Http\Resources\User\AuthResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,13 +39,27 @@ class AuthController extends Controller
     }
 
 
-    public function islogin(){
+    public function registration(RegistationRequest $request){
 
 
-        $user = User::where('id',Auth::id())->first();
-        dd(Auth::check());
 
-        return AuthResource::make(Auth::id());
+    }
+
+
+    public function GuestLogin(GuestLoginRequest $request){
+
+        User::create([
+            'name'=>'guest',
+            'phone'=>$request->phone,
+            'password'=>bcrypt('123456'),
+            'isGuest'=>true,
+        ]);
+
+        Auth::attempt([
+
+        ]);
+
+        return response()->json(['massage'=>'A']);
 
 
     }
