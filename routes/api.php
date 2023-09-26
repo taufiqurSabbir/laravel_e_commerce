@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\CategoriesController;
+use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\PromotionsController;
 use App\Http\Controllers\Api\User\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,12 @@ Route::get('/user/info',[AuthController::class,'userInfo']);
     Route::get('/all/category',[CategoriesController::class,'allcategory']);
 
 //    order
-    Route::post('/place/order',[\App\Http\Controllers\Api\OrdersController::class,'createOrder']);
+    Route::post('/place/order',[OrdersController::class,'createOrder']);
+    Route::get('/all/order',[OrdersController::class,'allOrder']);
+
+
+//    slider
+
+    Route::post('/add/slider',[PromotionsController::class,'addSlider']);
 
 });
