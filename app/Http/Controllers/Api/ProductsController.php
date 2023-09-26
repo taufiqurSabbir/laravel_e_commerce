@@ -31,7 +31,7 @@ class ProductsController extends Controller
             'isNew'=>$isNew,
             'isSpecial'=>$isSpecial,
             'category_id'=>$request->category_id,
-
+          'product_code'=>$request->product_code,
         ]);
 
       Imgaes::create(
@@ -47,7 +47,7 @@ class ProductsController extends Controller
 
     public function allproduct(){
         $products=  DB::table('products')
-            ->select('products.name','products.description','products.color','products.size','products.price','products.isPopular','products.isNew','products.isSpecial','products.Stock','imgaes.image')
+            ->select('products.name','products.product_code','products.description','products.color','products.size','products.price','products.isPopular','products.isNew','products.isSpecial','products.Stock','imgaes.image')
             ->join('imgaes','imgaes.product_id','=','products.id')
             ->get();
 
