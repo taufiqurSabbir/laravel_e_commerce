@@ -21,6 +21,8 @@ return new class extends Migration
             $table->boolean('isPopular');
             $table->boolean('isNew');
             $table->boolean('isSpecial');
+            $table->String('Stock');
+            $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
         });
     }

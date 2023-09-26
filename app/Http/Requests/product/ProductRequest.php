@@ -27,7 +27,7 @@ class ProductRequest extends FormRequest
            'size'=>['required'],
            'price'=>['required'],
            'description'=>['required'],
-            'product_category'=>['required'],
+            'category_id'=>['required'],
            'stock'=>['required'],
 
         ];
