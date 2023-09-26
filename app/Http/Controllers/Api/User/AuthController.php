@@ -39,8 +39,26 @@ class AuthController extends Controller
     }
 
 
-    public function registration(RegistationRequest $request){
+    public function Register(RegistationRequest $request){
 
+
+        $user = User::create([
+            'name'=>$request->name,
+            'phone'=>$request->phone,
+            'password'=>bcrypt($request->password),
+            'isGuest'=>false,
+            'role'=>'client',
+            'city'=>$request->city,
+            'shopping_address'=>$request->shopping_address,
+
+        ]);
+
+        $token= $user->createToken('user-token')->plainTextToken;
+
+        return (new AuthResource($user))->additional(['data'=>[
+            'token' =>$token,
+            'token_type' => 'Bearer'
+        ]]);
 
 
     }
@@ -48,18 +66,20 @@ class AuthController extends Controller
 
     public function GuestLogin(GuestLoginRequest $request){
 
-        User::create([
+
+
+      $user =   User::create([
             'name'=>'guest',
             'phone'=>$request->phone,
             'password'=>bcrypt('123456'),
             'isGuest'=>true,
         ]);
+        $token= $user->createToken('user-token')->plainTextToken;
 
-        Auth::attempt([
-
-        ]);
-
-        return response()->json(['massage'=>'A']);
+        return (new AuthResource($user))->additional(['data'=>[
+            'token' =>$token,
+            'token_type' => 'Bearer'
+        ]]);
 
 
     }
