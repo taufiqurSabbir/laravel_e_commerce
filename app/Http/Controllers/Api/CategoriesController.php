@@ -14,4 +14,10 @@ class CategoriesController extends Controller
 
             return send_massage($request->name . ' category created',true,200);
     }
+
+
+    public function allcategory(){
+       $category =  Categories::all();
+       return send_massage($category,true,200);
+    }
 }
