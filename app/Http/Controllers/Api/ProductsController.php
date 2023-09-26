@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\product\ProductRequest;
 use App\Models\Imgaes;
 use App\Models\Products;
+use Illuminate\Support\Facades\DB;
 use Nette\Utils\Image;
 
 class ProductsController extends Controller
@@ -41,5 +42,16 @@ class ProductsController extends Controller
       );
 
       return send_massage('Product Create successful',true,200);
+    }
+
+
+    public function allproduct(){
+        $products=  DB::table('products')
+            ->select('products.name','products.description','products.color','products.size','products.price','products.isPopular','products.isNew','products.isSpecial','products.Stock','imgaes.image')
+            ->join('imgaes','imgaes.product_id','=','products.id')
+            ->get();
+
+
+        return send_massage($products,true,200);
     }
 }

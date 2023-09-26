@@ -34,6 +34,8 @@ Route::get('/user/info',[AuthController::class,'userInfo']);
 
 //product
     Route::post('/create/product',[ProductsController::class,'productCreate']);
+    Route::get('/all/product',[ProductsController::class,'allproduct']);
+
     Route::post('/add/category',[CategoriesController::class,'addcategory']);
     Route::get('/all/category',[CategoriesController::class,'allcategory']);
 
