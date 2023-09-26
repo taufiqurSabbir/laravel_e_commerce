@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\User\AuthController;
 use Illuminate\Http\Request;
@@ -33,5 +34,6 @@ Route::get('/user/info',[AuthController::class,'userInfo']);
 
 //product
     Route::post('/create/product',[ProductsController::class,'productCreate']);
+    Route::post('/add/category',[CategoriesController::class,'addcategory']);
 
 });
