@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\User\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,11 @@ Route::post('/guest/login',[AuthController::class,'GuestLogin']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
+//    user
 Route::post('/logout',[AuthController::class,'logout']);
 Route::get('/user/info',[AuthController::class,'userInfo']);
+
+//product
+    Route::post('/create/product',[ProductsController::class,'productCreate']);
+
 });
