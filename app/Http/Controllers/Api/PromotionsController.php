@@ -16,4 +16,10 @@ class PromotionsController extends Controller
     ]);
     return send_massage('slider added',true,200);
   }
+
+
+  public function allslider(){
+      $slider = Promotions::all();
+      return $slider;
+  }
 }

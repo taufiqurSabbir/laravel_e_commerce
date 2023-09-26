@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\PromotionsController;
 use App\Http\Controllers\Api\User\AuthController;
+use App\Http\Controllers\Api\WishController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +50,11 @@ Route::get('/user/info',[AuthController::class,'userInfo']);
 //    slider
 
     Route::post('/add/slider',[PromotionsController::class,'addSlider']);
+    Route::get('/all/slider',[PromotionsController::class,'allSlider']);
+
+
+    //wish list
+    Route::post('/add/wish',[WishController::class,'addWish']);
+    Route::get('/all/wish',[WishController::class,'allWish']);
 
 });
