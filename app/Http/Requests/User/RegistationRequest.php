@@ -25,7 +25,6 @@ class RegistationRequest extends FormRequest
             'name' => ['required'],
             'phone' => ['required', 'numeric', 'min:11', 'unique:users,phone'],
             'password' => ['required', 'confirmed'],
-//            'role' => ['required'], // Add this line to validate the 'role' field
             'city' => ['required'],
             'shopping_address' => ['required'],
         ];
