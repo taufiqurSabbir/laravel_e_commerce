@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->timestamp('phone_verified_at')->nullable();
-            $table->boolean('isGuest');
+            $table->boolean('isGuest')->default(false);
+            $table->String('role')->default('client')->comment('client,admin');
+            $table->String('city')->nullable();
+            $table->String('shopping_address')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
