@@ -35,8 +35,11 @@ Route::get('/user/info',[AuthController::class,'userInfo']);
 //product
     Route::post('/create/product',[ProductsController::class,'productCreate']);
     Route::get('/all/product',[ProductsController::class,'allproduct']);
-
+//category
     Route::post('/add/category',[CategoriesController::class,'addcategory']);
     Route::get('/all/category',[CategoriesController::class,'allcategory']);
+
+//    order
+    Route::post('/place/order',[\App\Http\Controllers\Api\OrdersController::class,'createOrder']);
 
 });

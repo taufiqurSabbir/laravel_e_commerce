@@ -51,7 +51,6 @@ class ProductsController extends Controller
             ->join('imgaes','imgaes.product_id','=','products.id')
             ->get();
 
-
         return send_massage($products,true,200);
     }
 }

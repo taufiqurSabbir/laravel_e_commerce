@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('product_id')->constrained('products');
+            $table->String('quantity');
+            $table->String('shipping_address');
             $table->timestamps();
         });
     }
